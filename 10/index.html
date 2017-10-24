@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <title>
+    </title>
+    <script src="https://unpkg.com/vue@2.4.4/dist/vue.js">
+    </script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div id="app">	
+      <sidebar v-model='value'></sidebar>
+      <label for="">Outside Input Box</label>
+      <input type="text" v-model='value' class="form-control">
+      </div>
+    </div>
+    <script> 
+
+    Vue.component('sidebar',{
+      template:`
+        <div>          
+          <label for="">Component Input Box</label>
+          <input type="text" class="form-control" v-on:input='change(valueC)'v-model='valueC' >
+        </div>
+      `,
+       data(){
+
+        return{
+          valueC:''
+        } 
+      },
+       methods:{
+        change(valueC)
+        {
+          return this.$emit('input',valueC);
+        }
+       } 
+    })
+      new Vue ({
+        el: '#app',
+        data:{
+          value:''
+        },
+        methods:
+        {
+          increments()
+          {
+            this.value+=1
+          }
+        }
+       
+      })
+    </script>
+    <style type="text/css">
+      
+    </style>     
+  </body>
+</html>

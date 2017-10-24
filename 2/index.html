@@ -1,0 +1,96 @@
+<html>
+	<head>
+		<title></title>
+		<script src="https://unpkg.com/vue@2.4.4/dist/vue.js"></script>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	</head>
+	<body>
+			<div class="container">
+				<div id="app">				
+				<h1> Methods :	{{reverseM()}} 	</h1>
+				<h1> Computed :	{{reverseC}} 	</h1>
+				<h1> Methods :	{{reverseM()}} 	</h1>
+				<h1> Methods :	{{reverseM()}} 	</h1>
+				<h1> Methods :	{{reverseM()}} 	</h1>
+				<h1> Computed :	{{reverseC}} 	</h1>
+				<h1> Computed :	{{reverseC}} 	</h1>
+				
+				<input type="text" v-model = 'fullName'>
+				<h3>{{firstName}}</h3>
+				<h3>{{lastName}}</h3>
+				<input type ="text" v-model='km'>
+				<input type ="text" v-model='m'>
+				
+				
+				</div>
+			</div>
+	<script>
+		new Vue ({
+			el: '#app',
+			data: { 
+			message: 'This is Javed Here',
+			km:0,
+			m:0,
+			firstName : 'Javed',
+			lastName : 'Hossain'
+			},
+			
+			methods: 
+			{  /*			
+				reverse:function(){
+					return this.message.split('').reverse().join('');
+				}*/
+				
+				reverseM:function ()
+				{
+					return Date.now()
+				}
+			},
+			computed:
+			{
+				/*reverseC:function(){
+					return this.message.split('').reverse().join('');
+				}*/ 
+				
+				reverseC:function ()
+				{
+					return Date.now()
+				},
+				
+				fullName : 
+				{
+						// getter
+					get : function() {
+						return this.firstName+' '+this.lastName;
+					},
+					
+					// setter
+					
+					set : function(name)
+					{
+						var name = name.split(' ');
+						this.firstName = name[0];
+						this.lastName = name[name.length -1];
+					}
+					
+				}
+				
+				
+			},
+			watch:
+			{
+				km:function(val)
+				{
+					this.km = val;
+					this.m = val*1000;
+				},
+				m:function(val)
+				{
+					this.km = val/1000;
+					this.m = val;
+				}
+			}
+		})
+	</script>
+	</body>
+</html>

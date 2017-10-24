@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <title>
+    </title>
+    <script src="https://unpkg.com/vue@2.4.4/dist/vue.js">
+    </script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      <div id="app">
+        <!-- First-->
+        <h1> {{ message}} 
+        </h1>
+        <!-- Second-->
+        <h1 v-bind:class='className'> {{ message}} 
+        </h1>
+        <!-- Third -->
+        <h2 v-if="show">Third Element
+        </h2>
+        <!-- fourth-->
+        <ol v-show= 'visible'>
+          <li v-for='list in lists'> {{list}}
+          </li>
+        </ol>
+        <!--Fifth-->
+        <ul>
+          <li v-for='list in lists1'> {{list.name}}
+          </li>
+        </ul>
+        <!--Sixth-->
+        <input type = "text" v-model="message" class="form-control">
+        <!--Seventh-->
+        <button v-on:Click='enableList'>Show List
+        </button>
+        <!-- Difference Between v-if and v-show -->
+      </div>
+    </div>
+    <script>
+      new Vue ({
+        el:'#app',
+        data:{
+          message:"This is Vue Series",
+          className : "alert alert-danger",
+          show:true,
+          lists : ['Javed', 'Javed', 'Javed', 'Javed', 'Javed'],
+          lists1 : [
+            {
+              name :'Javed'}
+            ,
+            {
+              firstName : 'Javed'}
+            ,  
+            {
+              lastName : 'Javed'}
+            , 
+            {
+              address : 'Javed'}
+            , 
+            {
+              softName :'Javed'}
+          ],
+          visible:false
+        }
+        ,
+        methods:{
+          enableList : function(){
+            this.visible=true;
+          }
+        }
+      }
+              )
+    </script>
+  </body>
+</html>
